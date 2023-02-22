@@ -2,6 +2,8 @@ import React from 'react'
 import { Button, Box, Container } from '@mui/material/';
 import {useNavigate} from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu';
+import axios from 'axios';
+
 
 const textStyle = {
     fontSize: 20,
@@ -10,6 +12,15 @@ const textStyle = {
 
 export default function Navbar() {
     const navigate = useNavigate()
+
+    const handleLogin = () => {
+        axios({
+            url: "https://api.wannabedevs.com/",
+            method: 'get'
+        }).then(res => {
+            console.log(res.data)
+        })
+    }
 
     const handleNavigate = (path) => {
         navigate(path)
@@ -29,7 +40,7 @@ export default function Navbar() {
                 </Box>
 
                 <Box flex={1} display={{xs: 'none', md:'flex'}} justifyContent={'flex-end'}>
-                    <Button variant="contained" color='success' sx={{marginRight: 2}}>Sign in</Button>
+                    <Button variant="contained" color='success' sx={{marginRight: 2}} onClick={handleLogin}>Sign in</Button>
                     <Button variant="contained" >Sign up</Button>
                 </Box>
 
