@@ -15,9 +15,9 @@ export default function Navbar() {
 
     const handleLogin = () => {
         axios({
-            url: "https://api.wannabedevs.com/",
+            url: "https://api.wannabedevs.com/login",
             // url: "http://localhost:3000/",
-            method: 'get',
+            method: 'post',
             withCredentials: true
         }).then(res => {
             console.log(res.data)
