@@ -10,24 +10,33 @@ const textStyle = {
     cursor: 'pointer'
 }
 
-export default function Navbar() {
+export default function Navbar(props) {
     const navigate = useNavigate()
 
+    // const handleLogin = () => {
+    //     axios({
+    //         url: "https://api.wannabedevs.com/login",
+    //         // url: "http://localhost:3000/",
+    //         method: 'post',
+    //         withCredentials: true
+    //     }).then(res => {
+    //         console.log(res.data)
+    //     })
+    // }
+
     const handleLogin = () => {
-        axios({
-            url: "https://api.wannabedevs.com/login",
-            // url: "http://localhost:3000/",
-            method: 'post',
-            withCredentials: true
-        }).then(res => {
-            console.log(res.data)
-        })
+        props.setopenSignInDiag(true)
+    }
+
+    const handleSignUp = () => {
+        props.setopenSignUpDiag(true)
     }
 
     const handleNavigate = (path) => {
         navigate(path)
     }
     return (
+        <Box >
         <Container maxWidth='xl'>
             <Box display='flex' justifyContent={'space-between'} alignItems='center'>
                 <Box flex={1} display={'flex'}>
@@ -43,12 +52,13 @@ export default function Navbar() {
 
                 <Box flex={1} display={{xs: 'none', md:'flex'}} justifyContent={'flex-end'}>
                     <Button variant="contained" color='success' sx={{marginRight: 2}} onClick={handleLogin}>Sign in</Button>
-                    <Button variant="contained" >Sign up</Button>
+                    <Button variant="contained" onClick={handleSignUp}>Sign up</Button>
                 </Box>
 
                 
                 <MenuIcon fontSize='large' sx={{display: {md: "none", xs: "flex"}}}/>
             </Box>
         </Container>
+        </Box>
     )
 }
