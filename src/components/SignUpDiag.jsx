@@ -2,6 +2,12 @@ import React from 'react'
 import { Dialog, DialogTitle, TextField, DialogContent, DialogActions, Button, Stack } from '@mui/material'
 
 export default function SignUpDialog(props) {
+    const handleOpenSignUp = () => {
+        props.setopenSignUpDiag(false)
+        props.setopenSignInDiag(true)
+        
+    }
+
     return (
         <Dialog open={props.open} onClose={props.handleClose} maxWidth='sm' fullWidth>
             <DialogTitle>Sign Up</DialogTitle>
@@ -16,8 +22,8 @@ export default function SignUpDialog(props) {
                 </Stack>
             </DialogContent>
             <DialogActions>
-                <Button color='success'>Sign up</Button>
-                <Button >Sign in</Button>
+                <Button color='success' >Sign up</Button>
+                <Button onClick={handleOpenSignUp}>Sign in</Button>
             </DialogActions>
         </Dialog>
     )
