@@ -14,7 +14,7 @@ import SignUpDialog from '../components/SignUpDiag'
 export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [openSignUpDiag, setopenSignUpDiag] = useState(false)
-    const [isLoggedIn, setisLoggedIn] = useState(true)
+    const [isLoggedIn, setisLoggedIn] = useState(false)
 
     const handleCloseSignInDiag = () => {
         setopenSignInDiag(false)

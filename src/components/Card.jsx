@@ -1,20 +1,18 @@
 import React from 'react'
-import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material'
-import Img from '../images/bottle_recycle.webp'
+import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material'
 
-export default function ProjectCard() {
+export default function ProjectCard(props) {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
                 component='img'
                 height="140"
-                image={Img}
+                image={props.img}
             />
             <CardContent>
-                <Typography variant='h5' gutterBottom>Bottle Recycle</Typography>
+                <Typography variant='h5' gutterBottom>{props.title}</Typography>
                 <Typography variant="body2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    {props.description.substring(0, 220)} {props.description.length > 220 ? '...' : null}
                 </Typography>
             </CardContent>
             <Button>Info</Button>
