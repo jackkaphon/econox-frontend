@@ -6,7 +6,7 @@ export default function StoryItem(props) {
         <Box display={'flex'} mt={5} flexDirection={{md: props.reversed ? 'row-reverse' : 'row', xs: 'column'}}>
             <Box flex={1} display='flex' alignItems={{md: props.reversed ? 'flex-start':'flex-end', xs: 'center'}} flexDirection='column' pr={{md: 5, xs: 0}}>
                 <Typography variant='h3'>{props.year}</Typography>
-                <img src={props.img} alt='' width={'70%'} />
+                <img src={window.$api + '/image/' + props.img} alt='' width={'70%'} />
             </Box>
 
             <Divider flexItem orientation="vertical" />

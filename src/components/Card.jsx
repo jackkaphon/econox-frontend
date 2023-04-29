@@ -7,7 +7,7 @@ export default function ProjectCard(props) {
             <CardMedia
                 component='img'
                 height="140"
-                image={props.img}
+                image={window.$api + '/image/' + props.img}
             />
             <CardContent>
                 <Typography variant='h5' gutterBottom>{props.title}</Typography>

@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Dialog, DialogTitle, TextField, DialogContent, DialogActions, Button, Stack } from '@mui/material'
 import axios from 'axios'
+import { userContext } from '../routes/index.jsx'
 
 export default function SignInDialog(props) {
     const [signInData, setsignInData] = useState({})
+    const { setuserInfo } = useContext(userContext)
 
     const handleOpenSignUp = () => {
         props.setopenSignInDiag(false)
@@ -12,11 +14,28 @@ export default function SignInDialog(props) {
 
     const handleSignIn = () => {
         axios({
-            url: 'http://localhost:3001/login',
+            url: window.$api + '/login',
             method: 'post',
+            withCredentials: true,
             data: signInData
         }).then(res => {
-            console.log(res.data)
+            switch (res.data.status) {
+                case 200:
+                    setsignInData({})
+                    props.setopenSignInDiag(false)
+                    props.setisLoggedIn(true)
+                    setuserInfo(res.data.data)
+                    break;
+                case 409:
+                    alert(res.data.msg)
+                    break;
+                case 404:
+                    alert(res.data.msg)
+                    break;
+                default:
+                    alert('Login failed')
+                    break;
+            }
         })
     }
 
